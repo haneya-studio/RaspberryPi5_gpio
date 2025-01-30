@@ -4,7 +4,7 @@ import sqlite_save as sql
 pd = sql.pd
 import matplotlib.pyplot as plt
 from tqdm import tqdm
-import analyze2 as analyze
+import analyze3 as analyze
 
 def f(num):
     binary_16bit = f'{num:08b}'  # 16ビットの2進数にゼロ埋め
