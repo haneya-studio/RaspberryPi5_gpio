@@ -3,7 +3,7 @@ pd = sql.pd
 import numpy as np
 import datetime
 
-CDS_THRESHOLD = 100
+CDS_THRESHOLD = 60
 
 
 def get_dark_time(df):
