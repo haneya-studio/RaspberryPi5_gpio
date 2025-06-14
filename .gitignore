@@ -1,1 +1,5 @@
 **/__pycache__/
+*.csv
+plot.png
+plot_full.png
+*.sqlite
