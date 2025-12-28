@@ -1,9 +1,9 @@
-import sqlite_save as sql
+from . import sqlite_save as sql
 pd = sql.pd
 import numpy as np
 import datetime
 
-CDS_THRESHOLD = 75
+CDS_THRESHOLD = 200
 
 
 def get_dark_time(df):
@@ -68,7 +68,7 @@ def get_dark_time(df):
     df_event = pd.concat(l, axis=1).T
    
     df_sleep = df_event
-    df_sleep.to_csv('./sleep3.csv')
+    df_sleep.to_csv('./output/sleep3.csv')
     df_sleep.to_csv('/var/www/html/sleep3.csv')
     return df_sleep
 

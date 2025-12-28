@@ -1,10 +1,10 @@
 import spidev
 import time
-import sqlite_save as sql
+import python.gpio.functions.sqlite_save as sql
 pd = sql.pd
 import matplotlib.pyplot as plt
 from tqdm import tqdm
-import analyze
+import analyze3 as analyze
 
 def f(num):
     binary_16bit = f'{num:08b}'  # 16ビットの2進数にゼロ埋め

@@ -1,10 +1,9 @@
 import spidev
 import time
-import sqlite_save as sql
+import python.gpio.functions.sqlite_save as sql
 pd = sql.pd
 import matplotlib.pyplot as plt
 from tqdm import tqdm
-import analyze3 as analyze
 
 def f(num):
     binary_16bit = f'{num:08b}'  # 16ビットの2進数にゼロ埋め
@@ -56,7 +55,6 @@ def measure(channel):
         df = sql.load()
         print(df.tail(50))
         plot(df)
-        analyze.get_dark_time(df)
     finally:
         adc.close()
         
@@ -74,7 +72,7 @@ def plot(df):
     # ax.set_xticklabels(new_labels, rotation=90)  # ラベルを置き換え    
     
     plt.tight_layout()
-    plt.savefig('./plot.png')
+    plt.savefig('./output/plot.png')
     plt.savefig('/var/www/html/cds.png')
     
     plt.close()

@@ -1,10 +1,10 @@
 import spidev
 import time
-import sqlite_save as sql
+import python.gpio.functions.sqlite_save as sql
 pd = sql.pd
 import matplotlib.pyplot as plt
 from tqdm import tqdm
-import analyze3 as analyze
+import python.gpio.not_use.analyze as analyze
 
 def f(num):
     binary_16bit = f'{num:08b}'  # 16ビットの2進数にゼロ埋め
@@ -62,24 +62,17 @@ def measure(channel):
         
 def plot(df):
     import datetime
-    # values = list(df['value'])
-    # datetime = df['datetime']  # .apply(lambda x: datetime.datetime.strptime(x, "%Y-%m-%d %H:%M:%S"))
-
-    plt.plot(df['datetime'], list(df['value']))
+    values = list(df['value'])
+    datetime = df['datetime']  # .apply(lambda x: datetime.datetime.strptime(x, "%Y-%m-%d %H:%M:%S"))
+    plt.plot(datetime, values)
     plt.xticks(rotation=90)
+    
     # ax = plt.gca()
     # xtick_labels = ax.get_xticklabels()
     # print([label.get_text() for label in xtick_labels])
     # new_labels = [pd.Timestamp(label).strftime('%Y-%m-%d %H:%M') for label in datetime]  # 新しいフォーマット
-    # ax.set_xticklabels(new_labels, rotation=90)  # ラベルを置き換え
-    plt.tight_layout()
-    plt.savefig('./plot_full.png')
-    plt.savefig('/var/www/html/cds_full.png')
-    plt.close()
-
-    tmp = df[df['datetime'] >= (datetime.datetime.now() - datetime.timedelta(days=7))]
-    plt.plot(tmp['datetime'], list(tmp['value']))
-    plt.xticks(rotation=90)
+    # ax.set_xticklabels(new_labels, rotation=90)  # ラベルを置き換え    
+    
     plt.tight_layout()
     plt.savefig('./plot.png')
     plt.savefig('/var/www/html/cds.png')

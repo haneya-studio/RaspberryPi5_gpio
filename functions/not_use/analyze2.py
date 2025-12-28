@@ -1,4 +1,4 @@
-import sqlite_save as sql
+import python.gpio.functions.sqlite_save as sql
 pd = sql.pd
 import numpy as np
 import datetime
